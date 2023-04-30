@@ -4,6 +4,12 @@
 
 [Install Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html) in your system.
 
+Install this target needed to build
+
+```
+rustup target add x86_64-unknown-linux-musl
+```
+
 [Vs Code Extension](https://marketplace.visualstudio.com/items?itemName=1YiB.rust-bundle) Rust extension to VS Code, to format and run test.
 
 ### ⚒️ Scripts
