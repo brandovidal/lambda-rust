@@ -48,6 +48,19 @@ async fn build_failure_response(error_message: &str) -> Response<Body> {
         .expect("could not build the error repsonse")
 }
 
+fn process_event<'a>(
+    pizza_name: Option<&'a str>,
+    pizza_list: &'a PizzaList,
+) -> Result<&'a Pizza, &'a str> {
+    match pizza_name {
+        Some(pizza_name) => match get_pizza_from_name(pizza_name, pizza_list) {
+            Some(pizza) => Ok(pizza),
+            _ => Err("no pizza found for the given name"),
+        },
+        _ => Err("could not find the pizza name"),
+    }
+}
+
 #[cfg(test)]
 mod tests {
 
@@ -102,5 +115,26 @@ mod tests {
             "{\"error\":\"test error message\"}",
             String::from_utf8(body.to_ascii_lowercase()).unwrap()
         );
+    }
+
+    #[test]
+    fn process_event_valid_pizza_test() {
+        let pizza_list = PizzaList::new();
+        let result = process_event(Some("regina"), &pizza_list);
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn process_event_invalid_pizza_test() {
+        let pizza_list = PizzaList::new();
+        let result = process_event(Some("unknown pizza"), &pizza_list);
+        assert!(matches!(result, Err("no pizza found for the given name")));
+    }
+
+    #[test]
+    fn process_event_no_pizza_test() {
+        let pizza_list = PizzaList::new();
+        let result = process_event(None, &pizza_list);
+        assert!(matches!(result, Err("could not find the pizza name")));
     }
 }
