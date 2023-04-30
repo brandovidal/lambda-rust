@@ -1,4 +1,7 @@
-use lambda_http::{aws_lambda_events::serde_json::json, Body, IntoResponse, Response};
+use lambda_http::{
+    aws_lambda_events::serde_json::json, run, service_fn, Body, Error, IntoResponse, Request,
+    RequestExt, Response,
+};
 use serde::Serialize;
 
 struct PizzaList {
@@ -59,6 +62,20 @@ fn process_event<'a>(
         },
         _ => Err("could not find the pizza name"),
     }
+}
+
+#[tokio::main]
+async fn main() -> Result<(), Error> {
+    let all_pizza = &PizzaList::new();
+    let handler_func = |event: Request| async move {
+        let response = match process_event(event.path_parameters().first("pizza_name"), all_pizza) {
+            Ok(pizza) => build_success_response(pizza).await,
+            Err(error_message) => build_failure_response(error_message).await,
+        };
+        Result::<Response<Body>, Error>::Ok(response)
+    };
+    run(service_fn(handler_func)).await?;
+    Ok(())
 }
 
 #[cfg(test)]
