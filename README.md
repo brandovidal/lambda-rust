@@ -23,7 +23,7 @@ cp target/x86_64-unknown-linux-gnu/release/lambda-rust ./bootstrap
 
 o 
 
-run script
+Run build script
 
 ```
 sudo chmod gu+x build.sh && ./build.sh
@@ -31,7 +31,12 @@ sudo chmod gu+x build.sh && ./build.sh
 
 ### Example
 
-Request get pizza by name
+Request to find non-existent pizza
+```
+curl -i https://8jcf5ibyi9.execute-api.sa-east-1.amazonaws.com/dev/pizza/xxx/price
+````
+
+Request to find pizza by name
 ```
 curl -i https://8jcf5ibyi9.execute-api.sa-east-1.amazonaws.com/dev/pizza/veggie/price
 ````
