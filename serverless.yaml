@@ -1,0 +1,25 @@
+frameworkVersion: '3'
+service: dracon-rust-lambda
+
+provider:
+  name: aws
+  runtime: provided.al2
+  region: sa-east-1
+
+package:
+  patterns:
+    - '!**'
+    - bootstrap
+
+functions:
+  pizza-rust: 
+    handler: bootstrap
+    events:
+      - http:
+          path: /pizza/{pizza_name}/price
+          method: GET
+          cors: true
+          request:
+            parameters:
+              paths:
+                pizza_name: true
