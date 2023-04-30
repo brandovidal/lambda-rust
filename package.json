@@ -1,0 +1,21 @@
+{
+  "name": "lambda-rust",
+  "version": "1.0.0",
+  "description": "### 📌 Pre requisites",
+  "main": "index.js",
+  "scripts": {
+    "print": "serverless print",
+    "build": "sudo chmod gu+x build.sh && ./build.sh",
+    "deploy": "serverless deploy --stage prod",
+    "deploy-dev": "serverless deploy --stage dev",
+    "remove": "serverless remove",
+    "clean": "npx rimraf .serverless/ target/ bootstrap Cargo.lock"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "rust",
+    "serverless"
+  ],
+  "author": "Brando Vidal"
+}

@@ -2,9 +2,19 @@ frameworkVersion: '3'
 service: dracon-rust-lambda
 
 provider:
+  stage: ${opt:stage, 'dev'}
   name: aws
   runtime: provided.al2
-  region: sa-east-1
+  timeout: 29
+  region: us-east-1
+  # deploymentPrefix: serverless #serverless #serverless-dracon-rust-lambda
+  deploymentBucket:
+    name: dracon-serverless-deploys
+    blockPublicAccess: true
+    versioning: true
+    tags:
+      app: dracon
+      bucket: dracon-serverless-deploys
 
 package:
   patterns:

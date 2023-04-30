@@ -1,3 +1,7 @@
+# Rust
 /target
-.serverless/
 bootstrap
+Cargo.lock
+
+# Generated files
+.serverless/

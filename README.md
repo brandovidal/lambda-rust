@@ -1,42 +1,47 @@
-# Lambda Rust
+# Rust on AWS Lambda using Serverless framework
 
 ### 📌 Pre requisites
 
-[Install Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html) in your system
+[Install Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html) in your system.
 
-
-[Vs Code Extension](https://marketplace.visualstudio.com/items?itemName=1YiB.rust-bundle) Rust extension to VS Code, to format and run test
+[Vs Code Extension](https://marketplace.visualstudio.com/items?itemName=1YiB.rust-bundle) Rust extension to VS Code, to format and run test.
 
 ### ⚒️ Scripts
 
-Build app
+Build App
 
 ```
-cargo build --release --target=x86_64-unknown-linux-gnu
+npm run build
 ```
 
-copy build app to root folder  project
+Deploy app
 
 ```
-cp target/x86_64-unknown-linux-gnu/release/lambda-rust ./bootstrap
+npm run deploy
 ```
 
-o 
-
-Run build script
+Print variables
 
 ```
-sudo chmod gu+x build.sh && ./build.sh
-````
+npm run print
+```
 
-### Example
+Remove package and generate
+
+```
+npm run clean
+```
+
+### ⌛ Requests
 
 Request to find non-existent pizza
+
 ```
-curl -i https://8jcf5ibyi9.execute-api.sa-east-1.amazonaws.com/dev/pizza/xxx/price
-````
+curl -i  https://3gaz7pa0g9.execute-api.us-east-1.amazonaws.com/dev/pizza/xxx/price
+```
 
 Request to find pizza by name
+
 ```
-curl -i https://8jcf5ibyi9.execute-api.sa-east-1.amazonaws.com/dev/pizza/veggie/price
-````
+curl -i  https://3gaz7pa0g9.execute-api.us-east-1.amazonaws.com/dev/pizza/veggie/price
+```
