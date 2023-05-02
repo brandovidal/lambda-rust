@@ -7,7 +7,6 @@ provider:
   runtime: provided.al2
   timeout: 29
   region: us-east-1
-  # deploymentPrefix: serverless #serverless #serverless-dracon-rust-lambda
   deploymentBucket:
     name: dracon-serverless-deploys
     blockPublicAccess: true
