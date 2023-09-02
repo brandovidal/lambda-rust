@@ -17,25 +17,25 @@ rustup target add x86_64-unknown-linux-musl
 Build App
 
 ```
-npm run build
+pnpm run build
 ```
 
 Deploy app
 
 ```
-npm run deploy
+pnpm run deploy
 ```
 
 Print variables
 
 ```
-npm run print
+pnpm run print
 ```
 
 Remove package and generate
 
 ```
-npm run clean
+pnpm run clean
 ```
 
 ### ⌛ Requests
