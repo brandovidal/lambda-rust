@@ -17,5 +17,9 @@
     "rust",
     "serverless"
   ],
-  "author": "Brando Vidal"
+  "author": "Brando Vidal",
+  "devDependencies": {
+    "rimraf": "5.0.5",
+    "serverless": "3.36.0"
+  }
 }
