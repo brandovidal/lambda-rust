@@ -1,5 +1,5 @@
 use lambda_http::{
-    aws_lambda_events::serde_json::json, run, service_fn, Body, Error, IntoResponse, Request,
+    aws_lambda_events::serde_json::json, run, service_fn, Body, Error, Request,
     RequestExt, Response,
 };
 use serde::Serialize;
